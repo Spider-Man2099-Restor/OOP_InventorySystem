@@ -157,6 +157,7 @@ public class editForm extends javax.swing.JFrame {
         sEditReorderLevel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         tfEditExpDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfEditExpDate.setText("yyyy-mm-dd");
 
         cbEditUnit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbEditUnit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCS", "PR", "SET", "KGS", "LTR", "FT", "IN" }));

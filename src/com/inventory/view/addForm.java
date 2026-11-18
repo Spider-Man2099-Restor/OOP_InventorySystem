@@ -143,6 +143,7 @@ public class addForm extends javax.swing.JFrame {
         sAddReorderLevel.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         tfaddExpDate.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tfaddExpDate.setText("yyyy-mm-dd");
 
         cbUnit.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cbUnit.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PCS", "PR", "SET", "KGS", "LTR", "FT", "IN" }));

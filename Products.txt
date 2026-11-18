@@ -6,3 +6,4 @@ PROD-006|Eyelash|Gae|Cosmetics|90.0|110.0|PCS|35|15|N/A|2026-11-16
 PROD-007|Condom Ultra Thin|Durex|All categories|400.0|499.0|PCS|30|19|2030-12-30|2026-11-16
 PROD-008|iPhone|Apple|Electronics|18999.0|22000.0|PCS|50|20|N/A|2026-11-16
 PROD-009|Barbwire|Tibay|Hardware|90.0|110.0|FT|40|20|N/A|2026-11-16
+PROD-010|Lotion XD|Nestle|Cosmetics|180.0|198.0|PCS|40|20|2030-09-10|2026-11-18
