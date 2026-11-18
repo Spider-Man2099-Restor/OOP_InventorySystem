@@ -68,7 +68,7 @@ public class editForm extends javax.swing.JFrame {
         editBtn = new javax.swing.JButton();
         clearBtn = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("NeatNest");
         setResizable(false);
 
