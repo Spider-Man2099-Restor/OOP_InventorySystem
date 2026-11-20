@@ -1,12 +1,15 @@
 package com.inventory.view;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.model.Product;
 import com.inventory.util.FileUtil;
+import java.awt.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +25,24 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         loadProductsToTable();
         setupPowerSearch();
+        
+        this.getContentPane().setBackground(Color.WHITE);
+        Header.setBackground(Color.WHITE);
+        
+        btnPanel.setBackground(Color.WHITE);
+        Header.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+//        btnPanel.putClientProperty(FlatClientProperties.STYLE,
+//                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+        searchPanel.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+        tablePanel.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+        
+        
+        
+        jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
+        jScrollPane1.getViewport().setBackground(Color.WHITE);
     }
 
     /**
@@ -344,6 +365,11 @@ public class Dashboard extends javax.swing.JFrame {
         UIManager.put("Button.arc",15);
         UIManager.put("Component.arc",15);
         UIManager.put("TextComponent.arc",8);
+        
+        UIManager.put("TableHeader.background", new Color(235, 241, 248));
+        UIManager.put("TableHeader.foreground", new Color(30, 41, 59));
+        UIManager.put("TableHeader.bottomSeparatorColor", new Color(203, 213, 225));
+        
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
     }
 
