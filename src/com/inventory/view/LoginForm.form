@@ -172,10 +172,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pfPassword" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="logInBtn" min="-2" max="-2" attributes="0"/>
+                  <Component id="logInBtn" min="-2" pref="32" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="dontHaveAnAccountBtn" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="190" max="32767" attributes="0"/>
+                  <EmptySpace pref="181" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
