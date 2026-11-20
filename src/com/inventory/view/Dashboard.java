@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
 public class Dashboard extends javax.swing.JFrame {
@@ -339,6 +340,10 @@ public class Dashboard extends javax.swing.JFrame {
     public static void main(String args[]) {
 //
         FlatMacLightLaf.setup();
+        
+        UIManager.put("Button.arc",15);
+        UIManager.put("Component.arc",15);
+        UIManager.put("TextComponent.arc",8);
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
     }
 
