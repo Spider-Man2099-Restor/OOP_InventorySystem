@@ -1,5 +1,6 @@
 package com.inventory.view;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.model.Product;
 import com.inventory.validations.ProductValidation;
@@ -17,7 +18,12 @@ public class addForm extends javax.swing.JFrame {
     }
 
     public addForm() {
+        
         initComponents();
+        header.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+        addingForm.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
     }
 
     @SuppressWarnings("unchecked")
@@ -181,7 +187,7 @@ public class addForm extends javax.swing.JFrame {
                             .addComponent(sAddReorderLevel)
                             .addComponent(tfaddExpDate)
                             .addComponent(cbUnit, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         addingFormLayout.setVerticalGroup(
             addingFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,14 +272,11 @@ public class addForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(footer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(addingForm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(header, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(footer, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addingForm, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
         );
         layout.setVerticalGroup(
