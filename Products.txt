@@ -7,3 +7,53 @@ PROD-007|Condom Ultra Thin|Durex|All categories|400.0|499.0|PCS|30|19|2030-12-30
 PROD-008|iPhone|Apple|Electronics|18999.0|22000.0|PCS|50|20|N/A|2026-11-16
 PROD-009|Barbwire|Tibay|Hardware|90.0|110.0|FT|40|20|N/A|2026-11-16
 PROD-010|Lotion XD|Nestle|Cosmetics|180.0|198.0|PCS|40|20|2030-09-10|2026-11-18
+PROD-014|Yogurt Cup 125g|Nestle|Dairy|28.0|35.0|PCS|60|15|2027-01-20|2026-11-21
+PROD-015|Cheddar Cheese Block 200g|Magnolia|Dairy|85.0|105.0|PCS|40|10|2027-04-10|2026-11-21
+PROD-016|Butter Salted 225g|Anchor|Dairy|135.0|160.0|PCS|30|10|2027-05-01|2026-11-21
+PROD-017|Evaporated Milk 370ml|Alaska|Dairy|36.0|44.0|Box|80|20|2027-08-15|2026-11-21
+PROD-018|Condensed Milk 300ml|Nestle|Dairy|48.0|58.0|Box|55|15|2027-09-30|2026-11-21
+PROD-019|Ibuprofen 200mg|Medicol|All categories|5.5|8.0|PCS|150|30|2028-11-10|2026-11-21
+PROD-020|Cetirizine 10mg|Alerid|All categories|7.0|10.5|PCS|100|25|2028-07-22|2026-11-21
+PROD-021|Mefenamic Acid 500mg|Dolfenal|All categories|9.0|13.0|PCS|90|20|2028-05-18|2026-11-21
+PROD-022|Vitamin C 500mg|Poten-Cee|All categories|6.0|9.0|PCS|140|30|2029-01-15|2026-11-21
+PROD-023|Antacid Chewable Tablet|Kremil-S|All categories|6.5|9.5|PCS|110|25|2028-03-12|2026-11-21
+PROD-024|Mechanical Keyboard|Logitech|Electronics|2100.0|2550.0|PCS|22|8|N/A|2026-11-21
+PROD-025|USB-C Hub 7-in-1|Anker|Electronics|1450.0|1790.0|PCS|28|10|N/A|2026-11-21
+PROD-026|Power Bank 20000mAh|Xiaomi|Electronics|950.0|1199.0|PCS|35|12|N/A|2026-11-21
+PROD-027|Bluetooth Speaker Mini|JBL|Electronics|1850.0|2200.0|PCS|18|6|N/A|2026-11-21
+PROD-028|Webcam 1080p HD|A4Tech|Electronics|1100.0|1350.0|PCS|20|8|N/A|2026-11-21
+PROD-029|Smartwatch Band|Huawei|Electronics|1600.0|1950.0|PCS|25|10|N/A|2026-11-21
+PROD-030|HDMI Cable 2m|UGREEN|Electronics|220.0|299.0|PCS|50|15|N/A|2026-11-21
+PROD-031|Flash Drive 64GB|SanDisk|Electronics|340.0|420.0|PCS|45|15|N/A|2026-11-21
+PROD-032|Lip Tint Matte|Maybelline|Cosmetics|260.0|329.0|PCS|40|12|2028-12-01|2026-11-21
+PROD-033|Sunscreen SPF50 50ml|Belo|Cosmetics|310.0|385.0|PCS|32|10|2028-04-20|2026-11-21
+PROD-034|Facial Cleanser Foam 100ml|Cetaphil|Cosmetics|420.0|510.0|PCS|28|10|2028-08-05|2026-11-21
+PROD-035|Eyebrow Pencil|Detail|Cosmetics|115.0|149.0|PCS|50|15|2029-02-14|2026-11-21
+PROD-036|Micellar Water 250ml|Garnier|Cosmetics|175.0|215.0|PCS|38|12|2028-10-30|2026-11-21
+PROD-037|Nail Polish Remover 100ml|Caronia|Cosmetics|55.0|75.0|PCS|45|15|2029-06-01|2026-11-21
+PROD-038|Steel Nail 3-inch|Tibay|Hardware|65.0|85.0|Box|75|20|N/A|2026-11-21
+PROD-039|PVC Pipe 1/2-inch|Neltex|Hardware|110.0|140.0|PCS|50|15|N/A|2026-11-21
+PROD-040|Electrical Tape Black|3M|Hardware|45.0|65.0|PCS|90|25|N/A|2026-11-21
+PROD-041|Wood Glue 250g|Pioneer|Hardware|85.0|110.0|PCS|36|10|2028-01-01|2026-11-21
+PROD-042|Paint Brush 2-inch|Stanley|Hardware|70.0|95.0|PCS|42|12|N/A|2026-11-21
+PROD-043|Padlock Brass 40mm|Yale|Hardware|240.0|295.0|PCS|24|8|N/A|2026-11-21
+PROD-044|Measuring Tape 5m|Stanley|Hardware|190.0|245.0|PCS|30|10|N/A|2026-11-21
+PROD-045|Sandpaper Grit 120|Norton|Hardware|18.0|25.0|PCS|120|30|N/A|2026-11-21
+PROD-046|Ballpen Blue 0.5mm|Pilot|All categories|22.0|30.0|PCS|200|50|N/A|2026-11-21
+PROD-047|Composition Notebook 80 Leaves|Corona|All categories|28.0|38.0|PCS|85|20|N/A|2026-11-21
+PROD-048|Correction Tape 5m|Tombow|All categories|58.0|78.0|PCS|65|15|N/A|2026-11-21
+PROD-049|Sticky Notes Pad|Post-it|All categories|45.0|62.0|PCS|70|20|N/A|2026-11-21
+PROD-050|Water Bottle Insulated 600ml|Aquaflask|All categories|680.0|850.0|PCS|25|8|N/A|2026-11-21
+PROD-051|Canvas Tote Bag|Pablo Raez|All categories|250.0|320.0|PCS|30|10|N/A|2026-11-21
+PROD-052|Cotton Crew Socks|Burlington|All categories|75.0|100.0|PCS|80|20|N/A|2026-11-21
+PROD-053|Compact Umbrella|Fibrella|All categories|290.0|360.0|PCS|28|10|N/A|2026-11-21
+PROD-054|Hand Sanitizer Spray 60ml|Green Cross|All categories|42.0|58.0|PCS|95|25|2028-09-15|2026-11-21
+PROD-055|Bandage Strip Box 100s|Band-Aid|All categories|130.0|165.0|Box|40|10|2029-03-01|2026-11-21
+PROD-056|Alcohol 70% Isopropyl 500ml|Razo|All categories|68.0|88.0|PCS|75|20|2028-12-20|2026-11-21
+PROD-057|Fresh Cream 250ml|Nestle|Dairy|54.0|68.0|Box|50|15|2027-03-25|2026-11-21
+PROD-058|Mozzarella Shredded 200g|Anchor|Dairy|115.0|142.0|PCS|32|10|2027-02-28|2026-11-21
+PROD-059|Wireless Gaming Headset|Logitech|Electronics|2450.0|2890.0|PCS|15|5|N/A|2026-11-21
+PROD-060|Phone Charger 30W Adapter|UGREEN|Electronics|480.0|599.0|PCS|45|12|N/A|2026-11-21
+PROD-061|Setting Spray Matte 100ml|ZEESEA|Cosmetics|220.0|275.0|PCS|30|10|2028-07-11|2026-11-21
+PROD-062|Screwdriver Set 6-in-1|Stanley|Hardware|260.0|330.0|PCS|26|8|N/A|2026-11-21
+PROD-063|A4 Bond Paper Ream 500s|Hard Copy|All categories|185.0|225.0|Box|60|15|N/A|2026-11-21

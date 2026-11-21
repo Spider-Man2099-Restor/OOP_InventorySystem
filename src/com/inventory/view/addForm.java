@@ -14,6 +14,10 @@ public class addForm extends javax.swing.JFrame {
 
     public addForm(Dashboard dashboard) {
         initComponents();
+        header.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+        addingForm.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
         this.dashboard = dashboard;
     }
 

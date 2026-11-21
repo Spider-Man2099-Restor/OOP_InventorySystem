@@ -15,6 +15,10 @@ public class editForm extends javax.swing.JFrame {
 
     public editForm(Dashboard dashboard, int rowIndex, Product product) {
         initComponents();
+        header.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
+        editForm.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
         this.dashboard = dashboard;
         this.rowIndex = rowIndex;
 
