@@ -218,6 +218,7 @@ public class Dashboard extends javax.swing.JFrame {
         productsTable.setSelectionBackground(java.awt.SystemColor.textHighlight);
         productsTable.setSelectionForeground(new java.awt.Color(255, 255, 255));
         productsTable.setShowGrid(true);
+        productsTable.setShowVerticalLines(false);
         jScrollPane1.setViewportView(productsTable);
 
         javax.swing.GroupLayout tablePanelLayout = new javax.swing.GroupLayout(tablePanel);
