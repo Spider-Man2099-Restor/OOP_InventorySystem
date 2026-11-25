@@ -19,7 +19,7 @@ public class ProductValidation {
         if (id == null || id.isBlank()) {
             return false;
         }
-        List<String> lines = FileUtil.readLines("Products.txt");
+        ProductDAO dao = new ProductDAO();
             if (new ProductDAO().exists(id)) {
             return false; // Duplicate ID found
         }

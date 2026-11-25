@@ -377,14 +377,10 @@ public class addForm extends javax.swing.JFrame {
                         JOptionPane.WARNING_MESSAGE
                 );
             }
+        }
+         catch (SQLException ex) {
+            System.getLogger(addForm.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Error saving product: " + ex.getMessage(),
-                    "File Error",
-                    JOptionPane.ERROR_MESSAGE
-            );
-        } catch (SQLException ex) {
             System.getLogger(addForm.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }//GEN-LAST:event_addBtnActionPerformed
