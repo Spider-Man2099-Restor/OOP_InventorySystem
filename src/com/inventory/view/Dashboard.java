@@ -5,8 +5,10 @@ import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.model.Product;
 import com.inventory.util.FileUtil;
 import java.awt.Color;
-
+import com.inventory.dao.ProductDAO;
+import java.sql.SQLException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
@@ -25,10 +27,10 @@ public class Dashboard extends javax.swing.JFrame {
         initComponents();
         loadProductsToTable();
         setupPowerSearch();
-        
+
         this.getContentPane().setBackground(Color.WHITE);
         Header.setBackground(Color.WHITE);
-        
+
         btnPanel.setBackground(Color.WHITE);
         Header.putClientProperty(FlatClientProperties.STYLE,
                 "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
@@ -38,9 +40,7 @@ public class Dashboard extends javax.swing.JFrame {
                 "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
         tablePanel.putClientProperty(FlatClientProperties.STYLE,
                 "arc: 20; background: #FFFFFF; border: 1,1,1,1, #E2E8F0, 1, 20");
-        
-        
-        
+
         jScrollPane1.setBorder(BorderFactory.createEmptyBorder());
         jScrollPane1.getViewport().setBackground(Color.WHITE);
     }
@@ -192,6 +192,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
+        productsTable.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
         productsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -286,8 +287,9 @@ public class Dashboard extends javax.swing.JFrame {
         }
 
         // Grab the selected Product from your ArrayList and pass it to editForm
-        Product selectedProduct = productList.get(selectedRow);
-        editForm form = new editForm(this, selectedRow, selectedProduct);
+        int modelRow = productsTable.convertRowIndexToModel(selectedRow);
+        Product selectedProduct = productList.get(modelRow);
+        editForm form = new editForm(this, modelRow, selectedProduct);
         form.setVisible(true);
     }//GEN-LAST:event_editBtnActionPerformed
 
@@ -304,7 +306,9 @@ public class Dashboard extends javax.swing.JFrame {
             return;
         }
 
-        Product selectedProduct = productList.get(selectedRow);
+        int modelRow = productsTable.convertRowIndexToModel(selectedRow);
+        Product selectedProduct = productList.get(modelRow);
+
         int confirm = JOptionPane.showConfirmDialog(
                 this,
                 "Are you sure you want to delete '" + selectedProduct.getProductName() + "'?",
@@ -316,34 +320,12 @@ public class Dashboard extends javax.swing.JFrame {
         if (confirm != JOptionPane.YES_OPTION) {
             return; // User clicked No or closed the dialog
         }
-
+        
         try {
             // 3. Remove from ArrayList in memory
-            productList.remove(selectedRow);
-
-            // 4. Rebuild lines and overwrite Products.txt
-            List<String> lines = new ArrayList<>();
-            for (Product p : productList) {
-                lines.add(p.getProductId() + "|" + p.getProductName() + "|"
-                        + p.getProductBrand() + "|" + p.getProductCategory() + "|"
-                        + p.getCostPrice() + "|" + p.getSellingPrice() + "|"
-                        + p.getProductUnit() + "|" + p.getProductQuantity() + "|"
-                        + p.getReorderLevel() + "|" + p.getExpDate() + "|"
-                        + p.getDateAdded());
-            }
-            FileUtil.writeAllLines("Products.txt", lines);
-
-            // 5. Refresh productsTable on screen
+            new ProductDAO().delete(selectedProduct.getProductId());
             loadProductsToTable();
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    "Product deleted successfully!",
-                    "Deleted",
-                    JOptionPane.INFORMATION_MESSAGE
-            );
-
-        } catch (IOException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(
                     this,
                     "Error deleting product: " + ex.getMessage(),
@@ -354,19 +336,18 @@ public class Dashboard extends javax.swing.JFrame {
 
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-  
     public static void main(String args[]) {
 //
         FlatMacLightLaf.setup();
-        
-        UIManager.put("Button.arc",15);
-        UIManager.put("Component.arc",15);
-        UIManager.put("TextComponent.arc",8);
-        
+
+        UIManager.put("Button.arc", 15);
+        UIManager.put("Component.arc", 15);
+        UIManager.put("TextComponent.arc", 8);
+
         UIManager.put("TableHeader.background", new Color(235, 241, 248));
         UIManager.put("TableHeader.foreground", new Color(30, 41, 59));
         UIManager.put("TableHeader.bottomSeparatorColor", new Color(203, 213, 225));
-        
+
         java.awt.EventQueue.invokeLater(() -> new Dashboard().setVisible(true));
     }
 
@@ -395,91 +376,34 @@ public class Dashboard extends javax.swing.JFrame {
         model.setRowCount(0);
 
         try {
-            List<String> lines = FileUtil.readLines("Products.txt");
-
-            for (String line : lines) {
-                if (line.isBlank()) {
-                    continue;
-                }
-
-                String[] p = line.split("\\|");
-
-                if (p.length >= 11) {
-                    // 1. Add Product object into productList so Edit/Delete works
-                    // 1. Add Product object into productList so Edit/Delete works
-                    Product product = new Product(
-                            p[0].trim(), p[1].trim(), p[2].trim(), p[3].trim(),
-                            Double.parseDouble(p[4].trim()),
-                            Double.parseDouble(p[5].trim()),
-                            p[6].trim(),
-                            Integer.parseInt(p[7].trim()),
-                            Integer.parseInt(p[8].trim()),
-                            p[9].trim(), p[10].trim()
-                    );
-                    productList.add(product);
-
-// 2. Add row into productsTable
-                    model.addRow(new Object[]{
-                        p[0].trim(), p[1].trim(), p[2].trim(), p[3].trim(),
-                        p[4].trim(), p[5].trim(), p[6].trim(), p[7].trim(),
-                        p[8].trim(), p[9].trim(), p[10].trim()
-                    });
-
-                }
+            for (Product p : new ProductDAO().getAll()) {
+                productList.add(p);
+                model.addRow(new Object[]{
+                    p.getProductId(), p.getProductName(),
+                    p.getProductBrand(), p.getProductCategory(),
+                    p.getCostPrice(), p.getSellingPrice(),
+                    p.getProductUnit(), p.getProductQuantity(),
+                    p.getReorderLevel(), p.getExpDate(),
+                    p.getDateAdded()
+                });
             }
-        } catch (IOException ex) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(
                     this,
                     "Failed to load products: " + ex.getMessage(),
-                    "File Error",
+                    "Database Error",
                     JOptionPane.ERROR_MESSAGE
             );
         }
     }
 
-    public void addNewProduct(Product product) throws IOException {
-        // 1. Add to ArrayList
-        productList.add(product);
-
-        // 2. Add directly to productsTable
-        DefaultTableModel model = (DefaultTableModel) productsTable.getModel();
-        model.addRow(new Object[]{
-            product.getProductId(), product.getProductName(),
-            product.getProductBrand(), product.getProductCategory(),
-            product.getCostPrice(), product.getSellingPrice(),
-            product.getProductUnit(), product.getProductQuantity(),
-            product.getReorderLevel(), product.getExpDate(),
-            product.getDateAdded()
-        });
-
-        // 3. Write to Products.txt
-        String line = product.getProductId() + "|" + product.getProductName() + "|"
-                + product.getProductBrand() + "|" + product.getProductCategory() + "|"
-                + product.getCostPrice() + "|" + product.getSellingPrice() + "|"
-                + product.getProductUnit() + "|" + product.getProductQuantity() + "|"
-                + product.getReorderLevel() + "|" + product.getExpDate() + "|"
-                + product.getDateAdded();
-
-        FileUtil.appendLine("Products.txt", line);
+    public void addNewProduct(Product product) throws SQLException {
+        new ProductDAO().insert(product);
+        loadProductsToTable();
     }
 
-    public void updateProduct(int rowIndex, Product updatedProduct) throws IOException {
-        // 1. Update the Product in your ArrayList
-        productList.set(rowIndex, updatedProduct);
-
-        // 2. Rebuild all lines and overwrite Products.txt
-        List<String> lines = new ArrayList<>();
-        for (Product p : productList) {
-            lines.add(p.getProductId() + "|" + p.getProductName() + "|"
-                    + p.getProductBrand() + "|" + p.getProductCategory() + "|"
-                    + p.getCostPrice() + "|" + p.getSellingPrice() + "|"
-                    + p.getProductUnit() + "|" + p.getProductQuantity() + "|"
-                    + p.getReorderLevel() + "|" + p.getExpDate() + "|"
-                    + p.getDateAdded());
-        }
-        FileUtil.writeAllLines("Products.txt", lines);
-
-        // 3. Refresh productsTable
+    public void updateProduct(int rowIndex, Product updatedProduct) throws SQLException {
+        new ProductDAO().update(updatedProduct);
         loadProductsToTable();
     }
 

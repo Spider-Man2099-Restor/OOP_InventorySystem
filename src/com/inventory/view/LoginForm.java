@@ -1,9 +1,10 @@
 package com.inventory.view;
-
+import java.sql.SQLException;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.util.FileUtil;
 import com.inventory.validations.LoginSignUpValidation;
 import java.io.IOException;
-
+import javax.swing.UIManager;
 
 public class LoginForm extends javax.swing.JFrame {
 
@@ -87,7 +88,6 @@ public class LoginForm extends javax.swing.JFrame {
         rightSideForm.setBackground(new java.awt.Color(255, 255, 255));
 
         LogInTxt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        LogInTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LogInTxt.setText("LOG IN");
 
         usernameTxt.setBackground(new java.awt.Color(255, 255, 255));
@@ -107,9 +107,10 @@ public class LoginForm extends javax.swing.JFrame {
         passwordTxt.setForeground(new java.awt.Color(102, 102, 102));
         passwordTxt.setText("Password");
 
-        logInBtn.setForeground(new java.awt.Color(51, 0, 153));
+        logInBtn.setBackground(new java.awt.Color(0, 0, 51));
+        logInBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        logInBtn.setForeground(new java.awt.Color(255, 255, 255));
         logInBtn.setText("Log in");
-        logInBtn.setFocusable(false);
         logInBtn.addActionListener(this::logInBtnActionPerformed);
 
         dontHaveAnAccountBtn.setForeground(new java.awt.Color(102, 102, 102));
@@ -130,42 +131,42 @@ public class LoginForm extends javax.swing.JFrame {
                     .addGroup(rightSideFormLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(dontHaveAnAccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(LogInTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(rightSideFormLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addGroup(rightSideFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfUsername)
                             .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(tfEmail)
                             .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(logInBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pfPassword))
+                            .addComponent(pfPassword)
+                            .addComponent(tfUsername)
+                            .addComponent(LogInTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 79, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         rightSideFormLayout.setVerticalGroup(
             rightSideFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightSideFormLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(106, 106, 106)
                 .addComponent(LogInTxt)
-                .addGap(18, 18, 18)
+                .addGap(36, 36, 36)
                 .addComponent(usernameTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(passwordTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(logInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(logInBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(dontHaveAnAccountBtn)
-                .addContainerGap(181, Short.MAX_VALUE))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -221,7 +222,7 @@ public class LoginForm extends javax.swing.JFrame {
                         javax.swing.JOptionPane.ERROR_MESSAGE
                 );
             }
-        } catch (IOException ex) {
+        } catch (SQLException ex) {
             System.getLogger(LoginForm.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
             javax.swing.JOptionPane.showMessageDialog(
                     this,
@@ -242,24 +243,11 @@ public class LoginForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
+        FlatMacLightLaf.setup();
+        UIManager.put("Button.arc", 15);
+        UIManager.put("Component.arc", 15);
+        UIManager.put("TextComponent.arc", 8);
         java.awt.EventQueue.invokeLater(() -> new LoginForm().setVisible(true));
     }
 
@@ -279,7 +267,5 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JTextField tfUsername;
     private javax.swing.JLabel usernameTxt;
     // End of variables declaration//GEN-END:variables
-
-
 
 }

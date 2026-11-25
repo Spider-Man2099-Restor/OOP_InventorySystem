@@ -5,27 +5,24 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import com.inventory.dao.ProductDAO;
+import java.sql.SQLException;
 
 public class ProductValidation {
     
      public static boolean addProductValidation(
             String id, String name, String brand, String category,
             String costPriceText, String sellingPriceText, String unit,
-            int quantity, int reorder, String expDate) throws IOException {
+            int quantity, int reorder, String expDate) throws IOException, SQLException {
 
         // 1. Validate Product ID (not blank & not already in Products.txt)
         if (id == null || id.isBlank()) {
             return false;
         }
         List<String> lines = FileUtil.readLines("Products.txt");
-        for (String line : lines) {
-            if (line.isBlank()) continue;
-            String[] parts = line.split("\\|");
-            if (parts.length > 0 && id.trim().equalsIgnoreCase(parts[0].trim())) {
-                return false; // Duplicate ID found
-            }
+            if (new ProductDAO().exists(id)) {
+            return false; // Duplicate ID found
         }
-
         // 2. Validate Product Name
         if (name == null || name.isBlank()) {
             return false;

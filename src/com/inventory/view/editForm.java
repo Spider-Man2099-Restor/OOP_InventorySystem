@@ -1,5 +1,5 @@
 package com.inventory.view;
-
+import java.sql.SQLException;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.model.Product;
@@ -381,9 +381,9 @@ public class editForm extends javax.swing.JFrame {
                 JOptionPane.WARNING_MESSAGE
             );
         }
-    } catch (IOException ex) {
-        JOptionPane.showMessageDialog(this, "Error updating product: " + ex.getMessage());
-    }
+    }   catch (SQLException ex) {
+            System.getLogger(editForm.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
     }//GEN-LAST:event_editBtnActionPerformed
 
     public static void main(String args[]) {

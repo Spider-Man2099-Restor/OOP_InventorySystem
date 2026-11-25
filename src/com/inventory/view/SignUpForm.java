@@ -1,8 +1,11 @@
 package com.inventory.view;
-
+import com.inventory.dao.UserDAO;
+import java.sql.SQLException;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.util.FileUtil;
 import com.inventory.validations.LoginSignUpValidation;
 import java.io.IOException;
+import javax.swing.UIManager;
 
 public class SignUpForm extends javax.swing.JFrame {
 
@@ -83,7 +86,6 @@ public class SignUpForm extends javax.swing.JFrame {
         rightSideForm.setBackground(new java.awt.Color(255, 255, 255));
 
         createAccountTxt.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        createAccountTxt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         createAccountTxt.setText("CREATE ACCOUNT");
 
         usernameTxt.setBackground(new java.awt.Color(255, 255, 255));
@@ -105,9 +107,10 @@ public class SignUpForm extends javax.swing.JFrame {
         passwordTxt.setForeground(new java.awt.Color(102, 102, 102));
         passwordTxt.setText("Password");
 
-        signUpBtn.setForeground(new java.awt.Color(51, 0, 153));
+        signUpBtn.setBackground(new java.awt.Color(0, 0, 51));
+        signUpBtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        signUpBtn.setForeground(new java.awt.Color(255, 255, 255));
         signUpBtn.setText("Sign Up");
-        signUpBtn.setFocusable(false);
         signUpBtn.addActionListener(this::signUpBtnActionPerformed);
 
         alreadyHaveAnAccountBtn.setForeground(new java.awt.Color(102, 102, 102));
@@ -128,42 +131,42 @@ public class SignUpForm extends javax.swing.JFrame {
                     .addGroup(rightSideFormLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(alreadyHaveAnAccountBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(createAccountTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
                     .addGroup(rightSideFormLayout.createSequentialGroup()
                         .addGap(77, 77, 77)
                         .addGroup(rightSideFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfUsername)
                             .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(tfEmail)
                             .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(signUpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pfPassword))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(pfPassword)
+                            .addComponent(createAccountTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 79, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         rightSideFormLayout.setVerticalGroup(
             rightSideFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(rightSideFormLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(101, 101, 101)
                 .addComponent(createAccountTxt)
-                .addGap(18, 18, 18)
+                .addGap(39, 39, 39)
                 .addComponent(usernameTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(passwordTxt)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(signUpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(alreadyHaveAnAccountBtn)
-                .addContainerGap(182, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -209,11 +212,26 @@ public class SignUpForm extends javax.swing.JFrame {
 
         try {
             if (validate.validateSignUp(username, email, password)) {
-                FileUtil.appendLine("Users.txt", username + "|" + email + "|" + password);
+               new UserDAO().addUser(username, email, password);
 
+                 int choice = javax.swing.JOptionPane.showConfirmDialog(
+                    this,
+                    "Account created successfully!\nDo you want to continue to the Dashboard?",
+                    "Sign Up Successful",
+                    javax.swing.JOptionPane.YES_NO_OPTION,
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+            );
+
+            if (choice == javax.swing.JOptionPane.YES_OPTION) {
                 Dashboard d = new Dashboard();
                 this.dispose();
                 d.setVisible(true);
+            } else {
+                // Clear form if they choose No (or redirect to your Login form)
+                tfUsername.setText("");
+                tfEmail.setText("");
+                pfPassword.setText("");
+            }
             } else {
                 javax.swing.JOptionPane.showMessageDialog(
                         this,
@@ -222,14 +240,8 @@ public class SignUpForm extends javax.swing.JFrame {
                         javax.swing.JOptionPane.ERROR_MESSAGE
                 );
             }
-        } catch (IOException ex) {
+        } catch (SQLException ex) {
             System.getLogger(SignUpForm.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-            javax.swing.JOptionPane.showMessageDialog(
-                    this,
-                    "Error saving user data.",
-                    "File Error",
-                    javax.swing.JOptionPane.ERROR_MESSAGE
-            );
         }
 
     }//GEN-LAST:event_signUpBtnActionPerformed
@@ -244,24 +256,10 @@ public class SignUpForm extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
+        FlatMacLightLaf.setup();
+        UIManager.put("Button.arc", 15);
+        UIManager.put("Component.arc", 15);
+        UIManager.put("TextComponent.arc", 8);
         java.awt.EventQueue.invokeLater(() -> new SignUpForm().setVisible(true));
     }
 

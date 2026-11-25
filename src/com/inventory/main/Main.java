@@ -13,8 +13,8 @@ import javax.swing.UIManager;
 public class Main {
     public static void main (String [] args) throws Exception{
         
-        FileUtil.createStartupFile("Users.txt");
-        FileUtil.createStartupFile("Products.txt");
+//        FileUtil.createStartupFile("Users.txt");
+//        FileUtil.createStartupFile("Products.txt");
         
         FlatMacLightLaf.setup();
         UIManager.put("Button.arc",15);

@@ -1,5 +1,5 @@
 package com.inventory.view;
-
+import java.sql.SQLException;
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import com.inventory.model.Product;
@@ -384,6 +384,8 @@ public class addForm extends javax.swing.JFrame {
                     "File Error",
                     JOptionPane.ERROR_MESSAGE
             );
+        } catch (SQLException ex) {
+            System.getLogger(addForm.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
         }
     }//GEN-LAST:event_addBtnActionPerformed
 

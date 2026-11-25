@@ -1,1 +1,2 @@
 Admin|Admin@gmail.com|Admin123
+User|User@gmail.com|user123
