@@ -14,6 +14,7 @@ import java.util.List;
 public class ProductDAO {
 
     public List<Product> getAll() throws SQLException {
+        
         List<Product> list = new ArrayList<>();
         String sql = "SELECT * FROM products";
         try (Connection con = DBConnection.getConnection();
