@@ -4,10 +4,7 @@ import com.inventory.util.FileUtil;
 import com.inventory.validations.LoginSignUpValidation;
 import java.io.IOException;
 
-/**
- *
- * @author emanu
- */
+
 public class LoginForm extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginForm.class.getName());
